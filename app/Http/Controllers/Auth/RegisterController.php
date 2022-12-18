@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/added';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -46,25 +46,27 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    public function validator(Request $request)
     {
-        return Validator::make($data, [
-            'username' => ['required','string','length:{minimum:4,maximum:12}'],
-            'mail' => ['required','string','email','length:{minimum:4,maximum:12}','unique:users'],
-            'password' => ['required','alpha_num','length:{minimum:4,maximum:12}'],
-            'password-confirm' => ['required','length:{minimum:4,maximum:12}','same:password'],
-        ],
-        [
-            'username.required' => '必須項目です',
-            'username.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
-            'mail.required' => '必須項目です',
-		    'mail.email' => 'メールアドレスではありません',
-		    'password.required' => '必須項目です',
-		    'password.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
-		    'password-confirm.required' => '必須項目です',
-		    'password-confirm.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
-		    'password-confirm.same' => 'パスワードと確認用パスワードが一致していません',
-        ]);
+        return Validator::make($data,
+            [
+                'username' => ['required','string','length:{minimum:4,maximum:12}'],
+                'mail' => ['required','string','email','length:{minimum:4,maximum:12}','unique:users'],
+                'password' => ['required','alpha_num','length:{minimum:4,maximum:12}'],
+                'password-confirm' => ['required','length:{minimum:4,maximum:12}','same:password'],
+            ],
+            [
+                'username.required' => '必須項目です',
+                'username.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
+                'mail.required' => '必須項目です',
+		        'mail.email' => 'メールアドレスではありません',
+		        'password.required' => '必須項目です',
+		        'password.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
+		        'password-confirm.required' => '必須項目です',
+		        'password-confirm.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
+		        'password-confirm.same' => 'パスワードと確認用パスワードが一致していません',
+                ]
+        );
     }
 
     /**
@@ -90,7 +92,6 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-
             $this->create($data);
             return redirect('added');
         }
