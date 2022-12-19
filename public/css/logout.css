@@ -1,9 +1,17 @@
 @chasert "utf-8";
 
-html{
+html {
     height: 100%;
 }
-body{
+
+body {
     height: 100%;
-    background: #3C4767;
+    background: linear-gradient(#3C4767, 85%, #ff6747);
+    color: white;
+}
+
+h1,
+p,
+form {
+    text-align: center;
 }

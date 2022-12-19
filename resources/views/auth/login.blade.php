@@ -6,10 +6,15 @@
 
 <p>DAWNSNSへようこそ</p>
 
+<div class=”form-group”>
 {{ Form::label('MailAdress') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
+</div>
+
+<div class=”form-group”>
 {{ Form::label('password') }}
 {{ Form::password('password',['class' => 'input']) }}
+</div>
 
 {{ Form::submit('LOGIN') }}
 
