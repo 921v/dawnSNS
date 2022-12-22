@@ -22,14 +22,14 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
+        <h1><a href = "http://127.0.0.1:8000/top"><img src="images/logo.png"></a></h1>
+            <div id="accordion">
+                <div class="accordion-title">
                     <p>〇〇さん<img src="images/arrow.png"></p>
                 <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
+                <ul class="accordion-content">
+                    <li><a href="/top">HOME</a></li>
+                    <li><a href="/profile">プロフィール編集</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
             </div>
