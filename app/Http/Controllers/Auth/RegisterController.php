@@ -48,24 +48,24 @@ class RegisterController extends Controller
      */
     public function validator(Request $request)
     {
-        return Validator::make($data,
+        $request->validate(
             [
-                'username' => ['required','string','length:{minimum:4,maximum:12}'],
-                'mail' => ['required','string','email','length:{minimum:4,maximum:12}','unique:users'],
-                'password' => ['required','alpha_num','length:{minimum:4,maximum:12}'],
-                'password-confirm' => ['required','length:{minimum:4,maximum:12}','same:password'],
+                'username' => ['required','string','between:4,12'],
+                'mail' => ['required','string','email','between:4,12','unique:users'],
+                'password' => ['required','alpha_num','between:4,12'],
+                'password-confirm' => ['required','between:4,12','same:password'],
             ],
             [
                 'username.required' => '必須項目です',
-                'username.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
+                'username.between:4,12' => '4文字以上12文字以内で入力してください',
                 'mail.required' => '必須項目です',
 		        'mail.email' => 'メールアドレスではありません',
 		        'password.required' => '必須項目です',
-		        'password.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
+		        'password.between:4,12' => '4文字以上12文字以内で入力してください',
 		        'password-confirm.required' => '必須項目です',
-		        'password-confirm.length:{minimum:4,maximum:12}' => '4文字以上12文字以内で入力してください',
+		        'password-confirm.between:4,12' => '4文字以上12文字以内で入力してください',
 		        'password-confirm.same' => 'パスワードと確認用パスワードが一致していません',
-                ]
+            ]
         );
     }
 
