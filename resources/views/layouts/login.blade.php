@@ -22,12 +22,11 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href = "http://127.0.0.1:8000/top"><img src="images/logo.png"></a></h1>
-            <div id="accordion">
-                <div class="accordion-title">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
-                <ul class="accordion-content">
+        <h1><a href = "http://127.0.0.1:8000/top"><img src="images/main_logo.png"></a></h1>
+            <div class="accordion">
+                <label for ="accordion-title">〇〇さん<img src="images/dawn.png"></label>
+                <input type="checkbox" id="accordion-title" />
+                <ul id="accordion-content">
                     <li><a href="/top">HOME</a></li>
                     <li><a href="/profile">プロフィール編集</a></li>
                     <li><a href="/logout">ログアウト</a></li>
