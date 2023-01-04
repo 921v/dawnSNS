@@ -17,7 +17,13 @@
 // Route::get('/home', 'HomeController@index')->name('home');
 
 //Auth::routes();
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
@@ -38,3 +44,6 @@ Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+Route::get('/logout','Auth\LoginController@login');
+Route::post('/logout','Auth\LoginController@login');
