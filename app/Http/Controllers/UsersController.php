@@ -14,7 +14,6 @@ class UsersController extends Controller
         return view('users.search');
     }
     public function logout(){
-
         return redirect('/login');
     }
 }
