@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class RegisterController extends Controller
 {
@@ -46,27 +48,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function validator(Request $request)
+    public function validator(array $data)
     {
-        $request->validate(
-            [
+        return Validator::make($data, [
                 'username' => ['required','string','between:4,12'],
                 'mail' => ['required','string','email','between:4,12','unique:users'],
                 'password' => ['required','alpha_num','between:4,12'],
                 'password-confirm' => ['required','between:4,12','same:password'],
-            ],
-            [
-                'username.required' => '必須項目です',
-                'username.between:4,12' => '4文字以上12文字以内で入力してください',
-                'mail.required' => '必須項目です',
-		        'mail.email' => 'メールアドレスではありません',
-		        'password.required' => '必須項目です',
-		        'password.between:4,12' => '4文字以上12文字以内で入力してください',
-		        'password-confirm.required' => '必須項目です',
-		        'password-confirm.between:4,12' => '4文字以上12文字以内で入力してください',
-		        'password-confirm.same' => 'パスワードと確認用パスワードが一致していません',
-            ]
-        );
+            ],);
     }
 
     /**
@@ -91,6 +80,11 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
+            $request->validate([
+                'username' => 'required|string|min:4|max:12',
+                'mail' => 'required|string|email|min:4|max:12|unique:users',
+                'password' => 'required|string|min:4|max:12|confirmed|unique:users'
+            ]);
             $data = $request->input();
             $this->create($data);
             return redirect('added');
@@ -99,6 +93,7 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        return view('auth.added');
+        $user_name = DB::table('users')->latest()->value('username');
+        return view("auth.added", ['user_name' => $user_name]);
     }
 }
