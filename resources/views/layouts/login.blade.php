@@ -24,7 +24,8 @@
         <div id = "head">
         <h1><a href = "http://127.0.0.1:8000/top"><img src="images/main_logo.png"></a></h1>
             <div class="accordion">
-                <label for ="accordion-title">〇〇さん<img src="images/dawn.png"></label>
+                <label for ="accordion-title">{{ Auth::user()->username }}さん
+                    <img class="myicon" src="images/dawn.png"></label>
                 <input type="checkbox" id="accordion-title" />
                 <ul id="accordion-content">
                     <li><a href="/top">HOME</a></li>
@@ -40,15 +41,15 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ $follow_count }}名</p>
                 </div>
                 <p class="btn"><a href="">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ $follower_count }} 名</p>
                 </div>
                 <p class="btn"><a href="">フォロワーリスト</a></p>
             </div>

@@ -9,6 +9,13 @@ header {
     background: #3C4767;
 }
 
+.myicon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-position: left top;
+}
+
 /* accordion */
 .accordion {
     max-width: 600px;
