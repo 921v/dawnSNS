@@ -41,18 +41,28 @@
         </div >
         <div id="side-bar">
             <div id="side-bar-confirm">
-                <p class="side-ffitem side-myname">{{ Auth::user()->username }}さんの</p>
-                <div class="row">
-                <p class="side-ffitem">フォロー数</p>
-                <p class="side-count">{{ $follow_count }}名</p>
+                    <p class="side-ffitem side-myname">{{ Auth::user()->username }}さんの</p>
+
+                <div id="side-bar-confirm-follow">
+                    <p class="side-ffitem">フォロー数</p>
+                    <p class="side-count">{{ $follow_count }}名</p>
                 </div>
-                <p class="btn"><a href="/follow-list" class="side-btn">フォローリスト</a></p>
-                <div class="row">
-                <p class="side-ffitem">フォロワー数</p>
-                <p class="side-count">{{ $follower_count }} 名</p>
+
+                <div id="side-bar-confirm-follow-list">
+                    <p class="btn"><a href="/follow-list" class="side-btn">フォローリスト</a></p>
                 </div>
-                <p class="btn"><a href="follower-list" class="side-btn">フォロワーリスト</a></p>
-                </div class="row">
+
+                <div id="side-bar-confirm-follower">
+                    <p class="side-ffitem">フォロワー数</p>
+                    <p class="side-count">{{ $follower_count }} 名</p>
+                </div>
+
+                <div id="side-bar-confirm-follower-list">
+                    <p class="btn"><a href="follower-list" class="side-btn">フォロワーリスト</a></p>
+                </div>
+            </div>
+
+            <div id="side-bar-search">
                 <p class="btn"><a href="search" class="side-btn">ユーザー検索</a></p>
             </div>
         </div>
