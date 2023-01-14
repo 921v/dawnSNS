@@ -26,24 +26,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
-Route::post('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('auth.login');
+Route::post('/login', 'Auth\LoginController@login')->name('auth.login');
 
-Route::get('/register', 'Auth\RegisterController@register');
-Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@register')->name('auth.register');
+Route::post('/register', 'Auth\RegisterController@register')->name('auth.register');
 
-Route::get('/added', 'Auth\RegisterController@added');
+Route::get('/added', 'Auth\RegisterController@added')->name('auth.added');
 
 
 //ログイン中のページ
-Route::get('/top','PostsController@index');
+Route::resource('top','PostsController');
 
-Route::get('/profile','UsersController@profile');
+Route::get('/profile','UsersController@profile')->name('users.profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@index')->name('users.search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-Route::get('/logout','Auth\LoginController@login');
-Route::post('/logout','Auth\LoginController@login');
+Route::get('/logout','Auth\LoginController@logout')->name('auth.logout');
+Route::post('/logout','Auth\LoginController@logout')->name('auth.logout');
