@@ -40,20 +40,21 @@
             @yield('content')
         </div >
         <div id="side-bar">
-            <div id="confirm">
-                <p>{{ Auth::user()->username }}さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>{{ $follow_count }}名</p>
+            <div id="side-bar-confirm">
+                <p class="side-ffitem side-myname">{{ Auth::user()->username }}さんの</p>
+                <div class="row">
+                <p class="side-ffitem">フォロー数</p>
+                <p class="side-count">{{ $follow_count }}名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-                <p>{{ $follower_count }} 名</p>
+                <p class="btn"><a href="/follow-list" class="side-btn">フォローリスト</a></p>
+                <div class="row">
+                <p class="side-ffitem">フォロワー数</p>
+                <p class="side-count">{{ $follower_count }} 名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="follower-list" class="side-btn">フォロワーリスト</a></p>
+                </div class="row">
+                <p class="btn"><a href="search" class="side-btn">ユーザー検索</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
