@@ -10,7 +10,7 @@ use App\Follow;
 
 class PostsController extends Controller
 {
-    //
+    //デフォルト
     public function index(User $user, Follow $follow, Post $post){
         $user = auth()->user();
 
