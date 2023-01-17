@@ -4,18 +4,20 @@
 <!-- 4.1 投稿フォームの設置 -->
 <div class="container">
   <div class="form-group">
-    <div class="form-group-image">
-          <img src="images/dawn.png" class="form-icon" alt="ユーザーアイコン">
-    </div>
-    <div class="form-group-text">
-      {{ Form::open(['url' => '/top' ,'method' => 'post', 'class' => 'form-control']) }}
-      {{ Form::input('text', 'newPost', null, ['required','class' => 'form-control', 'placeholder' => '何をつぶやこうか…？' ] ) }}
-    </div>
-    <div class="form-send-icon">
+    <form method="POST" action="{{ route('top.store') }}">
+      {{ csrf_field() }}
+
+      <div class="form-group-image">
+        <img src="images/dawn.png" class="form-icon" alt="ユーザーアイコン">
+      </div>
+      <div class="form-group-text">
+        <textarea class="form-control" name="posts" style="border:none;" required rows="4" placeholder="何をつぶやこうか...?"></textarea>
+      </div>
+      <div class="form-send-icon">
         <button type="submit"><img src="images/post.png" alt="投稿"></button>
-    </div>
-      {{ Form::close() }}
-  </div>
+      </div>
+    </form>
+</div>
 
 
   <!-- 4.2.1 ユーザーのつぶやきを表示 -->

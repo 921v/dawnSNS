@@ -175,16 +175,16 @@ input {
     margin: 18px;
 }
 
-.form-group-text {
-    width: 65%;
-}
-
 .form-control {
     resize: none;
     width: 700px;
     color: #6C6C6C;
     font-size: 18px;
     margin-top: 20px;
+}
+
+.form-group-text {
+    width: 65%;
 }
 
 ::placeholder {
