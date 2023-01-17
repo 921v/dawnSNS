@@ -195,3 +195,13 @@ input {
 .form-send-icon {
     margin: auto 203.5px 12.5px auto;
 }
+
+button {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+button img {
+    display: block;
+}
