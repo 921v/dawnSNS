@@ -190,3 +190,93 @@ input {
     border: none;
     background: transparent;
 }
+
+/* 4.2 タイムライン */
+.user-post {
+    width: 100%;
+    border-bottom: 2px solid silver;
+    height: auto;
+    min-height: 9vw;
+    overflow: hidden;
+}
+
+.user-post-icon {
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    background-position: left top;
+    border: 1px solid #81E5FF;
+    margin: 18px;
+}
+
+.post-username {
+    margin-top: 2vw;
+    display: inline-block;
+}
+
+.post-time {
+    margin: 2vw 0 0 50vw;
+    display: inline-block;
+}
+
+.post-text {
+    margin-top: 1vw;
+}
+
+.delete-btn {
+    float: right;
+    margin-right: 2vw;
+    background: none;
+    border: none;
+}
+
+.edit-btn {
+    float: right;
+    margin-right: 2vw;
+    background: none;
+    border: none;
+}
+
+.delete-icon:hover {
+    background-image: url("../images/trash_h.png");
+}
+
+/* 4.3 編集用モーダル */
+.edit-modal {
+    display: none;
+}
+
+.modal-contents {
+    padding: 1vw;
+    margin-bottom: 1vw;
+    border: 2px solid gray;
+    position: fixed;
+    top: 10vw;
+    left: 24vw;
+    width: 50%;
+    height: 30%;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+.post-edit-contents {
+    color: gray;
+    width: 90%;
+    height: 7vw;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-left: 2vw;
+}
+
+.contents-validator {
+    color: orange;
+    float: left;
+    margin: 1vw 0 0 2vw;
+}
+
+.post-edit-btn {
+    border: none;
+    background-color: white;
+    margin: 0.5vw 0 0 6vw;
+}
