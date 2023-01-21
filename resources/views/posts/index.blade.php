@@ -4,7 +4,7 @@
 <!-- 4.1 投稿フォームの設置 -->
 <div class="post-area">
   <div class="form-group">
-    <img src="images/dawn.png" class="form-icon" alt="ユーザーアイコン">
+    <img src="images/dawn.png" class="user-icon" alt="ユーザーアイコン">
     {!! Form::open(['url' => '/top' ,'method' => 'post', 'class' => 'form-class']) !!}
     <div class="form-group-text">
     {!! Form::input('text', 'newPost', null, ['required','class' => 'form-control', 'placeholder' => '何をつぶやこうか…？' ]) !!}
@@ -20,11 +20,11 @@
   <div class="user-post">
     @if($auths->id === $timeLine->user->id)
     <a href="/profile">
-      <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
+      <img class="user-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
     </a>
     @else
     <a href="/profile/{{ $timeLine -> user_id}}">
-      <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
+      <img class="user-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
     </a>
     @endif
       <p class="post-username">{{ $timeline->user->username }}</p>
