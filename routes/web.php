@@ -40,7 +40,8 @@ Route::resource('top','PostsController');
 
 Route::get('/profile','UsersController@profile')->name('users.profile');
 
-Route::get('/search','UsersController@index')->name('users.search');
+Route::get('/search','UsersController@search')->name('users.search');
+Route::post('/search','UsersController@search')->name('users.search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
