@@ -345,3 +345,21 @@ input {
 .un {
     background-color: #b83d4e;
 }
+
+/* 6 フォローリスト */
+.follow-list {
+    padding-top: 1.5vw;
+    border-bottom: 2px solid silver;
+}
+
+.follow-list p {
+    margin: 0 0 1.5vw 4vw;
+    font-size: 1.5vw;
+    color: gray;
+}
+
+.follow-images {
+    padding-left: 6vw;
+    min-height: 10vw;
+    max-width: 80%;
+}

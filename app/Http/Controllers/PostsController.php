@@ -19,7 +19,7 @@ class PostsController extends Controller
         $follow_ids = $follow->followingIds($user->id);
         $following_ids = $follow_ids->pluck('follower')->toArray();
 
-        $timelines = $post->getTimelines($user->id, $following_ids);
+        $timelines = $post->getTimelines($following_ids);
 
         $follow_count = $follow->getFollowCount($user->id);
         $follower_count = $follow->getFollowerCount($user->id);
