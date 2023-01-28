@@ -45,7 +45,7 @@
 
                 <div id="side-bar-confirm-follow">
                     <p class="side-ffitem">フォロー数</p>
-                    <p class="side-count">{{ $follow_count }}名</p>
+                    <p class="side-count">{{ $follow_count ?? '' }}名</p>
                 </div>
 
                 <div id="side-bar-confirm-follow-list">
@@ -54,7 +54,7 @@
 
                 <div id="side-bar-confirm-follower">
                     <p class="side-ffitem">フォロワー数</p>
-                    <p class="side-count">{{ $follower_count }} 名</p>
+                    <p class="side-count">{{ $follower_count ?? '' }} 名</p>
                 </div>
 
                 <div id="side-bar-confirm-follower-list">

@@ -280,3 +280,68 @@ input {
     background-color: white;
     margin: 0.5vw 0 0 6vw;
 }
+
+/* 5 ユーザー検索 */
+.search-form {
+    border-bottom: 5px solid silver;
+}
+
+.search-form-open {
+    margin: 2vw 0vw 2vw 5vw;
+}
+
+.search-word {
+    padding: 1vw 17vw 0 0;
+    float: right;
+    color: gray;
+    font-size: 1.2vw;
+}
+
+.search-form-area {
+    padding: 0.7vw 12vw 0.7vw 0.2vw;
+    border-radius: 0.3vw;
+    border: medium solid silver;
+}
+
+.search-btn {
+    border-radius: 0.3vw;
+    background-color: #3C4767;
+    vertical-align: middle;
+}
+
+.search-btn-image {
+    width: 1.5vw;
+}
+
+.search-result {
+    margin: 2vw 0vw 0vw 5vw;
+}
+
+.search-user {
+    margin: 2vw 0vw;
+}
+
+.search-username {
+    display: inline-block;
+    margin-left: 1vw;
+    width: 5vw;
+}
+
+.search-follow,
+.search-unfollow {
+    display: inline;
+    margin-left: 30vw;
+}
+
+.follow-btn {
+    padding: 0.6vw;
+    width: 9vw;
+    border: none;
+    border-radius: 0.2vw;
+    background-color: #6782be;
+    color: white;
+}
+
+.un {
+    background-color: #b83d4e;
+}

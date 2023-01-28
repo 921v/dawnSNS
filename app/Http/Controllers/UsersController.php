@@ -25,6 +25,7 @@ class UsersController extends Controller
     public function search(Request $request){
         $auths = Auth::user();
         $id = Auth::id();
+        $user = auth()->user();
 
       if($request->isMethod('post')){
         if($request->filled('searchWord'))
@@ -37,29 +38,36 @@ class UsersController extends Controller
 
         elseif($request->filled('follow'))
         {
-            $followId = $request->input('follow');
-            Follow::create([
-                'follow' => $followId,
-                'follower' => $id,
-            ]);
+            $follower = auth()->user();
+            $isfollowing = $follower->isFollowing($user->id);
+                if(!$isfollowing) {
+                // フォローしていなければフォローする
+                $follower->follow($user->id);
 
-            return redirect('/search');
+                return redirect('/search');
+            }
         }
 
         elseif($request->filled('unfollow'))
         {
-            $unfollowId = $request->input('unfollow');
-            Follow::where('follow',$unfollowId)->where('follower',$id)->delete();
+            $follower = auth()->user();
+            $isFollowing = $follower->isFollowing($user->id);
+                if ($isFollowing) {
+                // フォローしていればフォローを解除する
+                $follower->unfollow($user->id);
 
-            return redirect('/search');
+                return redirect('/search');
+            }
         }
       }
 
         $searchResults = User::whereNotIn('id', [$id])->get();
         return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults]);
+
     }
 
     public function logout(){
+        Auth::logout();
         return redirect('/login');
-    }
+      }
 }
