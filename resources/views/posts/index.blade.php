@@ -7,7 +7,7 @@
     <img src="images/dawn.png" class="user-icon" alt="ユーザーアイコン">
     {!! Form::open(['url' => '/top' ,'method' => 'post', 'class' => 'form-class']) !!}
     <div class="form-group-text">
-    {!! Form::input('text', 'newPost', null, ['required','class' => 'form-control', 'placeholder' => '何をつぶやこうか…？' ]) !!}
+    {!! Form::textarea('text', null, ['required','class' => 'form-control', 'placeholder' => '何をつぶやこうか…？' ]) !!}
     </div>
     <button type="submit" class="form-send-icon"><img src="images/post.png" alt="投稿"></button>
     {!! Form::close() !!}

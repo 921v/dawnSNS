@@ -180,13 +180,24 @@ input {
 }
 
 .form-control {
-    width: 100%;
+    width: 80%;
     height: 5vw;
     border: 0px;
+    outline: none;
+}
+
+textarea {
+    font-size: 120%;
+    font-family: inherit;
+    margin: 10px 0px 0px 0px;
+}
+
+::placeholder {
+    color: #c0c0c0;
 }
 
 .form-send-icon {
-    margin-left: 60vw;
+    margin-left: 40vw;
     border: none;
     background: transparent;
 }
