@@ -190,6 +190,7 @@ textarea {
     font-size: 120%;
     font-family: inherit;
     margin: 10px 0px 0px 0px;
+    resize: none;
 }
 
 ::placeholder {
@@ -311,6 +312,8 @@ textarea {
 .search-form-area {
     padding: 0.7vw 12vw 0.7vw 0.2vw;
     border-radius: 0.3vw;
+    width: 20%;
+    resize: none;
     border: medium solid silver;
 }
 

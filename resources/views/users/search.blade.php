@@ -7,8 +7,8 @@
     <p class="search-word">{{ $searchWord }}</p>
   @endif
   {!! Form::open(['url' => '/search', 'method' => 'post', 'class' => 'search-form-open']) !!}
-  {!! Form::input('text', 'search-word', null, ['required', 'placeholder' => 'ユーザー名', 'class'=>'search-form-area']) !!}
-    <button type="submit" class="search-btn"><img class="search-btn-image" src="images/search.png" alt="検索"></button>
+  {!! Form::textarea('text', null, ['required', 'placeholder' => 'ユーザー名', 'class'=>'search-form-area', 'rows'=>'1' ]) !!}
+    <button type="submit" class="search-btn"><img class="search-btn-image" src="images/post.png" alt="検索"></button>
   {!! Form::close() !!}
 </div>
 
