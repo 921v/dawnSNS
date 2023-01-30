@@ -16,9 +16,10 @@ class UsersController extends Controller
     //
     public function profile($id){
         $auths = Auth::user();
-        $user_profiles = User::where('id',$id)->get();
+        $id = Auth::id();
+        $user_profiles = User::where('id',$id)->first();
 
-        return view('users.profile',['auths'=>$auths , 'user_profiles'=>$user_profiles]);
+        return view('users.profile',['auths'=>$auths , 'id' =>$id , 'user_profiles'=>$user_profiles]);
 
     }
 
