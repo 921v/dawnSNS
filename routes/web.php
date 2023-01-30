@@ -36,7 +36,12 @@ Route::get('/added', 'Auth\RegisterController@added')->name('auth.added');
 
 
 //ログイン中のページ
-Route::resource('top','PostsController');
+Route::get('/top','PostsController@index')->name('top');
+Route::post('/top','PostsController@index')->name('top');
+
+Route::post('/post','PostsController@store');
+Route::post('/post','PostsController@update');
+Route::get('/post/{id}','PostsController@delete');
 
 Route::get('/profile','UsersController@profile')->name('users.profile');
 
