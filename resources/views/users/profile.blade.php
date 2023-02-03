@@ -2,7 +2,8 @@
 
 @section('content')
 <!-- 自分のプロフィール -->
-@if($auths->id ===  $user_profiles->id)
+@if (isset($user_profile))
+@if($user_profiles->id === $auths->id)
 <div class="my-profile-contents">
   <img class="user-icon" src="images/dawn.png" alt="ユーザーアイコン">
   {!! Form::open(['url' => '/profile' , 'method' => 'post' ,'enctype'=>'multipart/form-data' , 'class' => 'my-profile-form']) !!}
@@ -33,7 +34,9 @@
 
   <div class="icon-upload">
     <p class="profile-text">Icon Image</p>
-    {!! Form::file('image-file', null, ['class' => 'my-profile-images']) !!}
+    <label class="image-form-label">
+    {!! Form::file('image-file', null, ['class' => 'my-profile-image']) !!}
+    </label>
   </div>
 
   {!! Form::submit('更新',['class'=>'my-profile-button']) !!}
@@ -41,6 +44,7 @@
 @else
 
 <!-- 他ユーザーのプロフィール -->
+@foreach ($user_profiles as $user_profile)
 <div class="user-profile-contents">
   <img class="user-icon" src="{{ asset('images/'. $user_profile -> images) }}" alt="ユーザーアイコン">
   <div class=user-profile-name>
@@ -74,6 +78,7 @@
     <p class="post-text">{{ $user_profile -> posts }}</p>
   </div>
 </div>
+@endforeach
 @endif
-
+@endif
 @endsection

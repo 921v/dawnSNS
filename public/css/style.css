@@ -360,7 +360,7 @@ textarea {
     background-color: #b83d4e;
 }
 
-/* 6 フォローリスト */
+/* 6 フォロー、フォロワーリスト */
 .follow-list {
     padding-top: 1.5vw;
     border-bottom: 2px solid silver;
@@ -376,4 +376,81 @@ textarea {
     padding-left: 6vw;
     min-height: 10vw;
     max-width: 80%;
+}
+
+/* 7 自分のプロフィール */
+.my-profile-form {
+    position: absolute;
+    top: 9vw;
+    left: 15vw;
+}
+
+.profile-text {
+    display: inline-block;
+    width: 11vw;
+}
+
+.my-profile-username,
+.my-profile-mail-address,
+.my-profile-new-password,
+.my-profile-bio {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #e0e0e0;
+}
+
+.my-profile-old-password {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+.my-profile-image {
+    display: inline-block;
+    height: 9vw;
+    width: 22vw;
+    background-color: #e0e0e0;
+    border-bottom: 1px solid black;
+}
+
+.image-form-label {
+    background-color: white;
+    font-size: 0.9vw;
+    cursor: pointer;
+    position: relative;
+    top: 2.5vw;
+    left: 4.5vw;
+    border-radius: 0.2vw;
+    padding: 0.2vw;
+}
+
+/* 7-2 他ユーザーのプロフィール */
+.user-profile-contents {
+    padding: 2vw 0 0 6vw;
+    border-bottom: 2px solid silver;
+    min-height: 10vw;
+}
+
+.user-profile-name-text {
+    display: inline;
+    padding-left: 1vw;
+}
+
+.user-profile-username {
+    margin-left: 3vw;
+    max-width: 3.6vw;
+    max-height: 3.6vw;
+}
+
+.user-bio-profile {
+    padding: 1vw 0 0 6vw;
+}
+
+.user-bio-profile-text {
+    display: inline;
+    padding-left: 1vw;
+}
+
+.profile-user-bio {
+    padding-left: 5.4vw;
 }

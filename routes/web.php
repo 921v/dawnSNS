@@ -46,7 +46,10 @@ Route::post('/post','PostsController@store');
 Route::post('/post','PostsController@update');
 Route::get('/post/{id}','PostsController@delete');
 
-Route::get('/profile','UsersController@profile')->name('users.profile');
+Route::get('/profile/{id}','UsersController@profile')->name('users.profile');
+
+Route::get('/profile' , 'PostsController@profile');
+Route::post('/profile' , 'PostsController@profile');
 
 Route::get('/search','UsersController@search')->name('users.search');
 Route::post('/search','UsersController@search')->name('users.search');

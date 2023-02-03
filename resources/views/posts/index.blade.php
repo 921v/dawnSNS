@@ -36,7 +36,7 @@
     @if ($post->id === Auth::user()->id)
       {!! Form::open(['url' => '/top','method' => 'post']) !!}
       <!-- 4.3.1 削除ボタン表示 -->
-        <button class="delete-btn" value="{{ $timeLine -> id }}" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')">
+        <button class="delete-btn" name="deletePost" value="{{ $timeLine -> id }}" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')">
           <img class="delete-icon" src="images/trash.png" alt="削除">
         </button>
       {!! Form::close()!!}
