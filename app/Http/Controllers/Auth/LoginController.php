@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use AuthenticatesAndRegistersUsers;
 
 class LoginController extends Controller
 {
@@ -46,9 +47,18 @@ class LoginController extends Controller
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
-                return redirect('/register');
+                return redirect('/top');
+            } else {
+                return redirect('login')
+                ->with('error','メールアドレス、またはパスワードが違います');
             }
         }
         return view("auth.login");
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');
     }
 }
