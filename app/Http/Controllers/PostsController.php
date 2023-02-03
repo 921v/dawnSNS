@@ -13,47 +13,54 @@ use App\Follow;
 class PostsController extends Controller
 {
     //デフォルト
-    public function index(User $user, Follow $follow, Post $post){
-        $user = auth()->user();
-
-        $follow_ids = $follow->followingIds($user->id);
-        $following_ids = $follow_ids->pluck('follower')->toArray();
-
-        $timelines = $post->getTimelines($user->id, $following_ids);
-
-        $follow_count = $follow->getFollowCount($user->id);
-        $follower_count = $follow->getFollowerCount($user->id);
-
-
-        return view('posts.index', [
-            'user'      => $user,
-            'timelines' => $timelines,
-            'follow_count'   => $follow_count,
-            'follower_count' => $follower_count,
-        ]);
+    public function __construct(){
+        $this->middleware('auth');
     }
 
-    // 投稿登録
-    public function store(Request $request){
-        $request->validate(
-            [
-                'newPost' => ['required','max:150'],
-            ],
-            [
-                'newPost.required' => '必須項目です',
-                'newPost.max' => '150文字以内で入力してください',
-            ]
-            );
+    public function index(Post $post,Request $request){
+        // login user情報取得
+        $auths = Auth::user();
 
-         $id = Auth::id();
-        $post = $request->input('newPost');
-        DB::table('posts')->insert([
-            'user_id' => $id,
-            'posts' => $post
-        ]);
+        // TimeLine
+        $id = Auth::id();
+        $follow_ids = Follow::where('follower',$id)->pluck('follow')->toArray();
+        $follow_ids[] = $id;
+        $timeLines = $post->getTimelines($follow_ids) ;
 
+        // 投稿create
+      if($request->isMethod('post')){
+        if ($request->filled('newPost'))
+        {
+            $user_post = $request->input('newPost');
+            Post::create([
+                'user_id' => $id,
+                'posts' => $user_post,
+            ]);
         return redirect('/top');
+        }
+
+        elseif($request->filled('editPost'))
+        {
+            $post_id = $request->input('id');
+            $user_editPost = $request->input('editPost');
+
+            Post::where('id',$post_id)->update(['posts' => $user_editPost]);
+
+            return redirect('/top');
+        }
+
+        elseif($request->filled('trashId'))
+        {
+            $post_id = $request->input('trashId');
+
+            Post::where('id',$post_id)->delete();
+
+            return redirect('/top');
+        }}
+
+        return view('posts.index' , [ 'auths' => $auths , 'timeLines' => $timeLines]);
     }
+
 
     // 投稿の編集
     public function update(Request $request){

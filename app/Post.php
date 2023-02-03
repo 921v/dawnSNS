@@ -11,9 +11,8 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function getTimelines(Int $user_id, Array $follow_ids)
+    public function getTimelines(Array $follow_ids)
     {
-        $follow_ids[] = $user_id;
         return $this->whereIn('user_id',$follow_ids)->orderBy('created_at','DESC')->paginate(50);
     }
 

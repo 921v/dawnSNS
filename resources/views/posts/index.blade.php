@@ -16,6 +16,7 @@
 
 <!-- 4.2 ユーザーのつぶやきを表示 -->
 <div class="timeline">
+  @if (isset($timelines))
   @foreach ($timelines as $timeline)
   <div class="user-post">
     @if(Auth::user()->id === $timeLine->user->id)
@@ -60,5 +61,6 @@
   </div>
 </div>
   @endforeach
+  @endif
 
 @endsection
