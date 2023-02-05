@@ -17,14 +17,21 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Post $post,Request $request){
-        $auths = Auth::user();
+    public function index(User $user, Follow $follow, Post $post){
+        $user = auth()->user();
         $id = Auth::id();
+        $follow_count = $follow->getFollowCount($user->id);
+        $follower_count = $follow->getFollowerCount($user->id);
         $follow_ids = Follow::where('follower',$id)->pluck('follow')->toArray();
         $follow_ids[] = $id;
-        $timeLines = $post->getTimelines($follow_ids) ;
+        $timeLines = $post->getTimelines($user->id, $follow_ids) ;
 
-        return view('posts.index', [ 'auths' => $auths , 'timeLines' => $timeLines]);
+        return view('posts.index', [
+            'user' => $user,
+            'follow_count' => $follow_count,
+            'follower_count' => $follower_count,
+            'timeLines' => $timeLines
+        ]);
     }
 
     // 投稿登録

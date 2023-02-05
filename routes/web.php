@@ -42,9 +42,9 @@ Route::get('/',function(){
 Route::get('/top','PostsController@index')->name('top');
 Route::post('/top','PostsController@index')->name('top');
 
-Route::post('/post','PostsController@store');
-Route::post('/post','PostsController@update');
-Route::get('/post/{id}','PostsController@delete');
+Route::post('/post/store','PostsController@store')->name('post.store');
+Route::post('/post/update','PostsController@update');
+Route::get('/post/{id}/delete','PostsController@delete');
 
 Route::get('/profile/{id}','UsersController@profile')->name('users.profile');
 

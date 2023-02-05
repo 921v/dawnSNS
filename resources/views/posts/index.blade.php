@@ -5,7 +5,7 @@
 <div class="post-area">
   <div class="form-group">
     <img src="images/dawn.png" class="user-icon" alt="ユーザーアイコン">
-    {!! Form::open(['url' => 'post' ,'method' => 'post', 'class' => 'form-class']) !!}
+    {!! Form::open(['url' => '/post/store' ,'method' => 'post', 'class' => 'form-class']) !!}
     <div class="form-group-text">
     {!! Form::textarea('newPost', null, ['required','class' => 'form-control', 'placeholder' => '何をつぶやこうか…？' ]) !!}
     </div>
@@ -19,21 +19,15 @@
   @if (isset($timelines))
   @foreach ($timelines as $timeline)
   <div class="user-post">
-    @if(Auth::user()->id === $timeLine->user->id)
-    <a href="/profile">
-      <img class="user-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
-    </a>
-    @else
     <a href="/profile/{{ $timeLine -> user_id}}">
       <img class="user-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
     </a>
-    @endif
-      <p class="post-username">{{ $timeline->user->username }}</p>
-      <p class="post-time">{{ $timeline->created_at }}</p>
-      <p class="post-text">{{ $timeline->posts }}</p>
+    <p class="post-username">{{ $timeline->user->username }}</p>
+    <p class="post-time">{{ $timeline->created_at }}</p>
+    <p class="post-text">{{ $timeline->posts }}</p>
 
     <!-- 4.3 ログインユーザーのボタン表示 -->
-    @if ($post->id === Auth::user()->id)
+    @if ($timeline->id === Auth::user()->id)
       {!! Form::open(['url' => '/top','method' => 'post']) !!}
       <!-- 4.3.1 削除ボタン表示 -->
         <button class="delete-btn" name="deletePost" value="{{ $timeLine -> id }}" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')">
