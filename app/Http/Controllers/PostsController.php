@@ -24,7 +24,7 @@ class PostsController extends Controller
         $follower_count = $follow->getFollowerCount($user->id);
         $follow_ids = Follow::where('follower',$id)->pluck('follow')->toArray();
         $follow_ids[] = $id;
-        $timeLines = $post->getTimelines($user->id, $follow_ids) ;
+        $timeLines = $post->getTimelines($follow_ids) ;
 
         return view('posts.index', [
             'user' => $user,
