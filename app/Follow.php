@@ -20,4 +20,16 @@ class Follow extends Model
   {
     return $this->where('follow', $user_id)->select('follower')->get();
   }
+
+  public function user()
+  {
+    return $this->hasMany(User::class,  'id', 'follow', 'follower');
+  }
+
+  protected $fillable = [
+    'follow', 'follower',
+  ];
+
+  public $timestamps = false;
+
 }

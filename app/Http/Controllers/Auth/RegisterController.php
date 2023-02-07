@@ -48,14 +48,42 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function validator(array $data)
+    public $validateRules = [
+        'username' => 'required|min:4|max:12',
+        'mail' => 'required|min:4|max:12|unique:users,mail',
+        'password' => 'required|numeric|digits_between:4,12|unique:users,password,|confirmed',
+        'password_confirmation' => 'required',
+    ];
+
+    public $validateMessages = [
+        "required" => "入力必須",
+        "min" => "4文字以上",
+        "max" => "12文字以内",
+        "digits_between" => "4字以上12字以内",
+        "numeric" => "英数字のみ",
+        "unique" => "既に存在します",
+        "confirmed" => "パスワードが一致しません"
+    ];
+
+    public function getRegister(){
+        return view('auth.register');
+    }
+
+    protected function postRegister(Request $request)
     {
-        return Validator::make($data, [
-                'username' => ['required','string','between:4,12'],
-                'mail' => ['required','string','email','between:4,12','unique:users'],
-                'password' => ['required','alpha_num','between:4,12','confirmed'],
-                'password-confirm' => ['required'],
-            ],);
+        $data = Request::all();
+        $val = Validator::make(
+            $data,
+            $this->validateRules,
+            $this->validateMessages
+        );
+    // NG
+    if($val->fails()){
+        return redirect('/register')->withErrors($val)->WithInput();
+    }
+    // OK
+        $this->create($data);
+        return redirect('/added')->WithInput();
     }
 
     /**

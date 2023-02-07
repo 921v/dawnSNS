@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
 use Auth;
-use App\Follow;
-use App\Post;
 use App\User;
+use App\Follow;
 
 class UsersController extends Controller
 {
@@ -64,6 +63,12 @@ class UsersController extends Controller
         $searchResults = User::whereNotIn('id', [$id])->get();
         return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults]);
 
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 
 }

@@ -154,15 +154,6 @@ input {
 }
 
 /* 4.1 投稿フォームの設置 */
-.post-area {
-    height: auto;
-    min-height: 750px;
-    width: 80%;
-    vertical-align: bottom;
-    box-sizing: border-box;
-    float: left;
-}
-
 .form-group {
     display: flex;
     width: 1360.5px;
@@ -205,7 +196,7 @@ textarea {
 
 /* 4.2 タイムライン */
 .user-post {
-    width: 100%;
+    width: 80%;
     border-bottom: 2px solid silver;
     height: auto;
     min-height: 9vw;
