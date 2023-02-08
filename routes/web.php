@@ -42,10 +42,12 @@ Route::get('/',function(){
 Route::get('/top','PostsController@index')->name('top');
 Route::post('/top','PostsController@index')->name('top');
 
-Route::get('/profile/{id}','UsersController@profile')->name('users.profile');
+  //ログインユーザー以外のページ
+Route::get('/profile/{id}','UsersController@userProfile')->name('users.userProfile');
 
+  //ログインユーザーページ
 Route::get('/profile' , 'PostsController@profile');
-Route::post('/profile' , 'PostsController@profile');
+Route::post('/profile/edit' , 'PostsController@profileEdit');
 
 Route::get('/search','UsersController@search')->name('users.search');
 Route::post('/search','UsersController@search')->name('users.search');

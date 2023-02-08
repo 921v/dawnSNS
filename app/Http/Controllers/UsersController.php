@@ -8,18 +8,37 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\User;
+use App\Post;
 use App\Follow;
 
 class UsersController extends Controller
 {
     //
-    public function profile($id){
+    public function userProfile($id){
         $auths = Auth::user();
-        $user_profiles = User::where('id',$id)->get();
+        $user = DB::table('users')
+            ->where('id', $id)
+            ->select('username', 'bio', 'images', 'id')
+            ->first();
+        $timeLines = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('posts.user_id', $id)
+            ->select('users.username', 'posts.posts', 'users.images', 'posts.created_at', 'posts.id',)
+            ->orderBy('posts.created_at', 'desc')
+            ->get();
+        $followings = DB::table('follows')
+            ->where('follower', Auth::id())
+            ->get();
+        $followlist = DB::table('follows')
+            ->where('follower', Auth::id())
+            ->count();
+        $followerlist = DB::table('follows')
+            ->where('follow', Auth::id())
+            ->count();
 
-        return view('users.profile',['auths'=>$auths , 'user_profiles'=>$user_profiles]);
-
+        return view('users.userProfile', ['timeLines' => $timeLines, 'auths' => $auths, 'followlist' => $followlist, 'followerlist' => $followerlist, 'followings' => $followings, 'user' => $user]);
     }
+
 
     public function search(Request $request){
         $auths = Auth::user();
@@ -59,10 +78,8 @@ class UsersController extends Controller
             }
         }
       }
-
         $searchResults = User::whereNotIn('id', [$id])->get();
         return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults]);
-
     }
 
     public function logout()
