@@ -1,17 +1,17 @@
 require('./bootstrap');
 
 $(function () {
-  $(".edit-btn").each(function () {
+  $(".modalopen").each(function () {
     $(this).on('click', function () {
       var target = $(this).data('target');
-      var modal = document.getElementById(target);
-      console.log(modal);
-      $(modal).fadeIn();
+      var editmodal = document.getElementById(target);
+      console.log(editmodal);
+      $(editmodal).fadeIn();
       return false;
     });
   });
-  $("#modal-contents").on('click', function () {
-    $('.edit-modal').fadeOut();
+  $(".post-edit-btn").on('click', function () {
+    $('.editmodal').fadeOut();
     return false;
   })
 });

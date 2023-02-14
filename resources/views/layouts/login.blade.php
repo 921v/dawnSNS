@@ -24,7 +24,8 @@
         <div id = "head">
         <h1><a href = "http://127.0.0.1:8000/top"><img src="images/main_logo.png"></a></h1>
             <div class="accordion">
-                <label for ="accordion-title">{{ Auth::user()->username }}さん
+                <label class ="accordion-title", for ="accordion-title">
+                    <p>{{ Auth::user()->username }}さん</p>
                     <img class="myicon" src="images/dawn.png"></label>
                 <input type="checkbox" id="accordion-title" />
                 <ul id="accordion-content">

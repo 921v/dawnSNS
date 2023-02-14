@@ -20,7 +20,7 @@
   @foreach ($timeLines as $timeLine)
   <div class="user-post">
     <a href="/profile/{{ $timeLine -> user_id}}">
-      <img class="user-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
+      <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
     </a>
     <p class="post-username">{{ $timeLine -> user -> username}}</p>
     <p class="post-time">{{ $timeLine -> created_at }}</p>
@@ -28,18 +28,19 @@
 
     <!-- 4.3 ログインユーザーのボタン表示 -->
     @if ($auths->id == $timeLine->user_id)
-      {!! Form::open(['url' => '/top','method' => 'post']) !!}
       <!-- 4.3.1 削除ボタン表示 -->
+      {!! Form::open(['url' => '/top','method' => 'post']) !!}
         <button class="delete-btn" name="deletePost" value="{{ $timeLine -> id }}" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')">
           <img class="delete-icon" src="images/trash.png" alt="削除">
         </button>
       {!! Form::close()!!}
       <!-- 4.3.2 編集ボタン表示 -->
-        <a class="edit-btn" href="" data-target="post-modal-{{ $timeLine -> id }}">
+      <div class='modalopen' data-target="post-modal-{{ $timeLine -> id }}">
+        <a class="edit-btn" href="" >
           <img src="images/edit.png" alt="編集">
         </a>
-          <!-- 4.4 編集モーダル表示 -->
-            <div class="edit-modal" id="post-modal-{{ $timeLine -> id }}">
+          <!-- 4.4 編集オーバーレイ表示 -->
+            <div class="editmodal" id="post-modal-{{ $timeLine -> id }}">
               <div id="modal-contents">
                 {!! Form::open(['url' => '/top','method' => 'post']) !!}
                 {!! Form::hidden('id', $timeLine -> id) !!}
@@ -50,6 +51,7 @@
                 {!! Form::close()!!}
               </div>
             </div>
+        </div>
     @endif
   </div>
 </div>
