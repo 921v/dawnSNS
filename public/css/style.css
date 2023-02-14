@@ -86,19 +86,14 @@ input {
 
 /* side-bar */
 #side-bar {
-    flex: 0 0 19%;
-    border-left: 1px solid #6C6C6C;
-    font-size: 14px;
-    height: auto;
-    min-height: 839px;
     width: 20%;
-    vertical-align: bottom;
     box-sizing: border-box;
-    float: left;
+    border-left: 2px solid #C0C0C0;
 }
 
 #side-bar-confirm {
     border-bottom: 1px solid #D7D7D7;
+    height: 15vw;
 }
 
 #side-bar-confirm-follows #side-bar-confirm-followers {
@@ -120,43 +115,35 @@ input {
 }
 
 .side-count {
-    margin: 34px 0 auto 0;
+    margin: 0px 0px 20px 240px;
     color: #6C6C6C;
 }
 
 .side-btn {
-    display: inline-block;
-    height: 43px;
-    width: 138px;
-    margin-bottom: 0;
-    font-size: 14px;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    line-height: 43px;
-    color: #FFFFFF;
+    color: white;
     background-color: #3C4767;
-    border-color: #3C4767;
-    margin: 10px 5px 25px auto;
+    border-radius: 5px;
+    display: flex;
+    width: 150px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 50px;
+}
+
+#side-bar-confirm-follow-list,
+#side-bar-confirm-follower-list {
+    margin: 0 0 0 70px;
 }
 
 #side-bar-search {
-    margin: 17px 75px auto 75px;
+    margin: 60px 0px 0px 0px;
 }
 
 /* 4.1 投稿フォームの設置 */
 .form-group {
     display: flex;
-    width: 1360.5px;
+    width: 1360px;
     vertical-align: left;
     box-sizing: border-box;
     border-bottom: 5px solid #D7D7D7;
@@ -213,17 +200,16 @@ textarea {
 }
 
 .post-username {
-    margin-top: 2vw;
     display: inline-block;
 }
 
 .post-time {
-    margin: 2vw 0 0 50vw;
+    margin: 0 0 1vw 55vw;
     display: inline-block;
 }
 
 .post-text {
-    margin-top: 1vw;
+    margin: 0 0 0 5vw;
 }
 
 .delete-btn {
@@ -249,7 +235,7 @@ textarea {
     display: none;
 }
 
-.modal-contents {
+#modal-contents {
     padding: 1vw;
     margin-bottom: 1vw;
     border: 2px solid gray;
@@ -260,7 +246,7 @@ textarea {
     height: 30%;
     background-color: white;
     border-radius: 5px;
-    z-index: 5;
+    z-index: 9999;
 }
 
 .post-edit-contents {

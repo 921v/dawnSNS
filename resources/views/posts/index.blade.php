@@ -40,14 +40,13 @@
         </a>
           <!-- 4.4 編集モーダル表示 -->
             <div class="edit-modal" id="post-modal-{{ $timeLine -> id }}">
-              <div class="modal-contents">
+              <div id="modal-contents">
                 {!! Form::open(['url' => '/top','method' => 'post']) !!}
                 {!! Form::hidden('id', $timeLine -> id) !!}
                 {!! Form::textarea('editPost', $timeLine -> posts, ['required', 'class'=>'post-edit-contents'])!!}
-                  <p class="contents-validator">編集画面が表示されると、選択された投稿内容が初期から入っているように<br>最大200文字までとする</p>
-                    <button class="post-edit-btn">
-                      <img src="images/edit.png" alt="編集モーダル">
-                    </button>
+                  <button class="post-edit-btn">
+                    <img src="images/edit.png" alt="編集モーダル">
+                  </button>
                 {!! Form::close()!!}
               </div>
             </div>
