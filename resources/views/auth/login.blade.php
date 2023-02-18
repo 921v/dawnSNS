@@ -1,10 +1,10 @@
 @extends('layouts.logout')
 
 @section('content')
-
+<div id = 'login'>
 {!! Form::open() !!}
 
-<p>DAWNSNSへようこそ</p>
+<h2>DAWNSNSへようこそ</h2>
 
 <div class=”form-group”>
 {{ Form::label('MailAdress') }}
@@ -16,10 +16,11 @@
 {{ Form::password('password',['class' => 'input']) }}
 </div>
 
-{{ Form::submit('LOGIN') }}
+{{ Form::submit('LOGIN',['class' => 'login-btn']) }}
 
 <p><a href="/register">新規ユーザーの方はこちら</a></p>
 
 {!! Form::close() !!}
+</div>
 
 @endsection

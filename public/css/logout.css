@@ -10,8 +10,150 @@ body {
     color: white;
 }
 
+header {
+    text-align: center;
+    padding-top: auto;
+    font-size: 1.5em;
+    margin-top: 5%;
+}
+
 h1,
 p,
 form {
     text-align: center;
+    padding-top: auto;
+}
+
+#login,
+#clear,
+#register {
+    color: white;
+    background: rgba(40, 49, 63, 0.3);
+    width: 250px;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 20px 20px 20px;
+}
+
+/* 新規登録 */
+#register h2 {
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 15px;
+}
+
+.input {
+    width: 200px;
+    height: 23px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.register-btn {
+    margin-top: 10px;
+    width: 120px;
+    height: 30px;
+    background: #657FCC;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+#register label {
+    color: #fff;
+    display: inline-block;
+    margin-left: 22px;
+    margin-bottom: 5px;
+    float: left;
+    font-size: 15px;
+}
+
+#register a {
+    color: #fff;
+}
+
+#register p {
+    font-size: 12px;
+}
+
+
+/* ログイン画面 */
+#login h2 {
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 15px;
+}
+
+#login {
+    text-align: center;
+}
+
+#login p {
+    color: #fff;
+    font-size: 12px;
+}
+
+#login a {
+    color: #fff;
+}
+
+.login-btn {
+    margin-top: 10px;
+    width: 120px;
+    height: 30px;
+    background: #657FCC;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+#login label {
+    color: #fff;
+    display: inline-block;
+    margin-left: 22px;
+    margin-bottom: 5px;
+    float: left;
+    font-size: 15px;
+}
+
+/* 登録完了 */
+#clear {
+    text-align: center;
+    color: #fff;
+}
+
+.usename {
+    margin: 20px 0 10px 0;
+    font-size: 17px;
+}
+
+.welcome {
+    margin: 5px 0 45px 0;
+    font-size: 15px;
+}
+
+.done {
+    margin: 10px 0 5px 0;
+    text-align: left;
+    font-size: 13px;
+}
+
+.added-btn {
+    margin-top: 10px;
+    width: 130px;
+    height: 30px;
+    background: #657FCC;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: none;
 }

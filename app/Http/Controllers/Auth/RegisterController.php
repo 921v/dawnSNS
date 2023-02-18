@@ -48,44 +48,6 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public $validateRules = [
-        'username' => 'required|min:4|max:12',
-        'mail' => 'required|min:4|max:12|unique:users,mail',
-        'password' => 'required|numeric|digits_between:4,12|unique:users,password,|confirmed',
-        'password_confirmation' => 'required',
-    ];
-
-    public $validateMessages = [
-        "required" => "入力必須",
-        "min" => "4文字以上",
-        "max" => "12文字以内",
-        "digits_between" => "4字以上12字以内",
-        "numeric" => "英数字のみ",
-        "unique" => "既に存在します",
-        "confirmed" => "パスワードが一致しません"
-    ];
-
-    public function getRegister(){
-        return view('auth.register');
-    }
-
-    protected function postRegister(Request $request)
-    {
-        $data = Request::all();
-        $val = Validator::make(
-            $data,
-            $this->validateRules,
-            $this->validateMessages
-        );
-    // NG
-    if($val->fails()){
-        return redirect('/register')->withErrors($val)->WithInput();
-    }
-    // OK
-        $this->create($data);
-        return redirect('/added')->WithInput();
-    }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -109,9 +71,10 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
             $request->validate([
-                'username' => 'required|string|min:4|max:12',
-                'mail' => 'required|string|email|min:4|max:12|unique:users',
-                'password' => 'required|string|min:4|max:12|confirmed|unique:users'
+                'username' => 'required|min:4|max:12',
+                'mail' => 'required|email|min:4|max:12|unique:users',
+                'password' => 'required|min:4|max:12',
+                'password-confirm' => 'required|min:4|max:12|same:password',
             ]);
             $data = $request->input();
             $this->create($data);

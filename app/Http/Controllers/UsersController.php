@@ -16,7 +16,7 @@ class UsersController extends Controller
     //
     public function userProfile($id){
         $auths = Auth::user();
-        $user = DB::table('users')
+        $users = DB::table('users')
             ->where('id', $id)
             ->select('username', 'bio', 'images', 'id')
             ->first();
@@ -36,7 +36,7 @@ class UsersController extends Controller
             ->where('follow', Auth::id())
             ->count();
 
-        return view('users.userProfile', ['timeLines' => $timeLines, 'auths' => $auths, 'followlist' => $followlist, 'followerlist' => $followerlist, 'followings' => $followings, 'user' => $user]);
+        return view('users.userProfile', ['timeLines' => $timeLines, 'auths' => $auths, 'followlist' => $followlist, 'followerlist' => $followerlist, 'followings' => $followings, 'users' => $users]);
     }
 
 
