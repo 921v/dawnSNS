@@ -22,7 +22,7 @@
 @foreach($timeLines as $timeLine)
 <div class="timeline">
   <img src="{{ asset('images/'. $users -> images) }}" alt="ユーザーアイコン" class="user-icon">
-  <p class="post-username">{{ $timeLine -> user -> username}}</p>
+  <p class="post-username">{{ $timeLine -> username}}</p>
   <p class="post-time">{{ $timeLine -> created_at }}</p>
   <p class="post-text">{{ $timeLine -> posts }}</p>
 </div>
