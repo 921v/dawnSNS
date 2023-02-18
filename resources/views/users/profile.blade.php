@@ -4,81 +4,94 @@
 <!-- ログインユーザーのプロフィール表示 -->
 {{ Form::open(['url' => '/profileEdit','files'=>true])}}
 <div class='my-profile'>
-  <div class="profile-icon">
-    <img src="images/dawn.png" alt="ユーザーアイコン" class="user-icon">
+  <div class="myprofile-icon">
+    <img src="images/dawn.png" alt="ユーザーアイコン" class="my-icon">
   </div>
 
-  <div class='profile-text'>
-    {{ Form::label('username','Username') }}
-  </div>
-  <div class="profile-form">
-    {{ Form::textarea('username',$auths->username,['required', 'class'=>'profile-username', 'rows'=>'1'])}}</li>
-  </div>
+  <table class="profile-table">
+    <tr>
+      <div class='profile-text'>
+        <th>{{ Form::label('username','Username') }}</th>
+      </div>
+      <div class="profile-form">
+        <td>{{ Form::textarea('username',$auths->username,['required', 'class'=>'profile-username', 'rows'=>'1'])}}</td>
+      </div>
+    </tr>
     @if($errors->has('username'))
     <div class="error">
       <p>{{ $errors->first('username') }}</p>
     </div>
     @endif
 
-  <div class="profile-text">
-    {{ Form::label('mail','MailAdress')}}
-  </div>
-  <div class="profile-form">
-    {{ Form::textarea('mail',$auths->mail,['required', 'class'=>'profile-mail-address', 'rows'=>'1']) }}
-  </div>
+  <tr>
+    <div class="profile-text">
+      <th>{{ Form::label('mail','MailAdress')}}</th>
+    </div>
+    <div class="profile-form">
+      <td>{{ Form::textarea('mail',$auths->mail,['required', 'class'=>'profile-mail-address', 'rows'=>'1']) }}</td>
+    </div>
+  </tr>
     @if($errors->has('mail'))
     <div class="error">
       <p>{{ $errors->first('mail') }}</p>
     </div>
     @endif
 
-  <div class="profile-text">
-    {{ Form::label('password','Password') }}
-  </div>
-  <div class="profile-form">
-    {{ Form::textarea('password','password',$auths->nothashpassword,['disabled', 'class' =>'profile-password', 'rows'=>'1']) }}
-  </div>
+  <tr>
+    <div class="profile-text">
+      <th>{{ Form::label('password','Password') }}</th>
+    </div>
+    <div class="profile-form">
+      <td>{{ Form::textarea('password',$auths->password,['disabled', 'class' =>'profile-password', 'rows'=>'1', 'style' => '-webkit-text-security:disc']) }}</td>
+    </div>
+  </tr>
 
-  <div class="profile-text">
-    {{ Form::label('newpassword','Newpassword') }}
-  </div>
-  <div class="profile-form">
-    {{ Form::textarea('password','newpassword' ,null, ['class' => 'profile-new-password', 'rows'=>'1']) }}
-  </div>
+  <tr>
+    <div class="profile-text">
+      <th>{{ Form::label('newpassword','Newpassword') }}</th>
+    </div>
+    <div class="profile-form">
+      <td>{{ Form::textarea('password',null, ['class' => 'profile-new-password', 'rows'=>'1', 'style' => '-webkit-text-security:disc']) }}</td>
+    </div>
+  </tr>
     @if($errors->has('newpassword'))
     <div class="error">
       <p>{{ $errors->first('newpassword') }}</p>
     </div>
     @endif
 
-  <div class="profile-text">
-    {{ Form::label('bio','Bio')}}
-  </div>
-  <div class="profile-form">
-    {{ Form::textarea('bio',$auths->bio,['class'=>'bio', 'rows'=>'3']) }}
-  </div>
+  <tr>
+    <div class="profile-text">
+      <th>{{ Form::label('bio','Bio')}}</th>
+    </div>
+    <div class="profile-form">
+      <td>{{ Form::textarea('bio',$auths->bio,['class'=>'bio', 'rows'=>'3']) }}</td>
+    </div>
+  </tr>
     @if($errors->has('bio'))
     <div class="error">
       <p>{{ $errors->first('bio') }}</p>
     </div>
     @endif
 
-  <div class="profile-text">
-    {{ Form::label('images','Icon Image') }}
-  </div>
-  <div class="profile-form">
-    {{ Form::file('images',null,['class'=>'icon']) }}
-  </div>
+  <tr>
+    <div class="profile-text">
+      <th>{{ Form::label('images','Icon Image') }}</th>
+    </div>
+    <div class="profile-form">
+      <td>{{ Form::textarea('images',null,['class'=>'profile-image', 'placeholder' => 'ファイルを選択']) }}</td>
+    </div>
+  </tr>
+    @if($errors->has('images'))
+    <div class="error">
+      <p>{{ $errors->first('images') }}</p>
+    </div>
+    @endif
+  </table>
+</div>
 
-  @if($errors->has('images'))
-  <div class="error">
-    <p>{{ $errors->first('images') }}</p>
-  </div>
-  @endif
-
-  <div class="profile-form">
-    {{ Form::submit('更新',['class'=>'up_btn']) }}
-  </div>
+<div class="profile-form">
+  {{ Form::submit('更新',['class'=>'up_btn']) }}
 </div>
 
 {{ Form::close()}}

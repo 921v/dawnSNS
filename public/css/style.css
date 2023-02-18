@@ -378,43 +378,72 @@ textarea {
     left: 15vw;
 }
 
-.profile-text {
-    display: inline-block;
-    width: 11vw;
+.myprofile-icon {
+    float: left;
+    margin-top: 10px;
+    margin-left: 80px;
 }
 
-.my-profile-username,
-.my-profile-mail-address,
-.my-profile-new-password,
-.my-profile-bio {
+.my-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-position: left top;
+    border: 1px solid #81E5FF;
+}
+
+.profile-username,
+.profile-mail-address,
+.profile-password,
+.bio {
     border: none;
     border-bottom: 1px solid black;
     background-color: #e0e0e0;
 }
 
-.my-profile-old-password {
+.profile-new-password {
     border: none;
     border-bottom: 1px solid black;
     background-color: white;
 }
 
-.my-profile-image {
+.profile-image {
     display: inline-block;
-    height: 9vw;
+    border: none;
+    height: 150px;
     width: 22vw;
     background-color: #e0e0e0;
     border-bottom: 1px solid black;
 }
 
-.image-form-label {
+.profile-image::placeholder {
     background-color: white;
-    font-size: 0.9vw;
+    font-size: 15px;
     cursor: pointer;
     position: relative;
-    top: 2.5vw;
-    left: 4.5vw;
-    border-radius: 0.2vw;
-    padding: 0.2vw;
+    text-align: center;
+    top: 50px;
+    width: 200px;
+    padding: 10px;
+    left: 140px;
+}
+
+.profile-table {
+    border-spacing: 0;
+    margin-top: 30px;
+    margin-left: 120px;
+}
+
+.profile-table td {
+    padding: 10px;
+    border-bottom: 1px solid #EEE;
+}
+
+.profile-table th {
+    padding: 30px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 25px;
 }
 
 /* 7-2 他ユーザーのプロフィール */
