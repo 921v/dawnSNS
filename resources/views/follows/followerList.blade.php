@@ -16,12 +16,14 @@
 <!--  フォロワーのタイムライン -->
 <div id="followTimeLines">
   @foreach ($timeLines as $timeLine)
-  <div id="followListPost" class="user-post">
-    <a href="/profile/{{ $timeLine -> user -> id}}">
-      <img src="images/{{ $timeLine -> user -> images}}" class="user-icon" alt="フォロワーアイコン">
-    </a>
-    <p class="post-username">{{ $timeLine -> user -> username}}</p>
-    <p class="post-time">{{ $timeLine -> created_at }}</p>
+  <div class="user-post">
+    <div class="post-info">
+      <a href="/profile/{{ $timeLine -> user_id}}">
+        <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
+      </a>
+      <p class="post-username">{{ $timeLine -> user -> username}}</p>
+      <p class="post-time">{{ $timeLine -> created_at }}</p>
+    </div>
     <p class="post-text">{{ $timeLine -> posts }}</p>
   </div>
   @endforeach

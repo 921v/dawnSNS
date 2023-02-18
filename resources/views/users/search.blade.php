@@ -24,7 +24,7 @@
 
     <!-- フォロー・解除ボタン -->
     <div class="btn-area">
-      @if($auths->isFollowing($auths->id, $searchResult->id))
+      @if($auths->isfollowing($users->id))
       {!! Form::open(['url' => '/search', 'method' => 'post', 'class' => 'search-unfollow']) !!}
         <button type="submit" class="un follow-btn" value="{{ $searchResult -> id}}" name="unfollow">フォローをはずす</button>
       {!! Form::close() !!}

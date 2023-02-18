@@ -19,11 +19,13 @@
   @if (isset($timeLines))
   @foreach ($timeLines as $timeLine)
   <div class="user-post">
-    <a href="/profile/{{ $timeLine -> user_id}}">
-      <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
-    </a>
-    <p class="post-username">{{ $timeLine -> user -> username}}</p>
-    <p class="post-time">{{ $timeLine -> created_at }}</p>
+    <div class="post-info">
+      <a href="/profile/{{ $timeLine -> user_id}}">
+        <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
+      </a>
+      <p class="post-username">{{ $timeLine -> user -> username}}</p>
+      <p class="post-time">{{ $timeLine -> created_at }}</p>
+    </div>
     <p class="post-text">{{ $timeLine -> posts }}</p>
 
     <!-- 4.3 ログインユーザーのボタン表示 -->

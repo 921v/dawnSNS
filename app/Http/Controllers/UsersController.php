@@ -13,7 +13,7 @@ use App\Follow;
 
 class UsersController extends Controller
 {
-    //
+    //他ユーザーのプロフィール
     public function userProfile($id){
         $auths = Auth::user();
         $users = DB::table('users')
@@ -39,47 +39,47 @@ class UsersController extends Controller
         return view('users.userProfile', ['timeLines' => $timeLines, 'auths' => $auths, 'followlist' => $followlist, 'followerlist' => $followerlist, 'followings' => $followings, 'users' => $users]);
     }
 
-
+    //検索
     public function search(Request $request){
         $auths = Auth::user();
         $id = Auth::id();
-        $user = auth()->user();
+        $users = DB::table('users')
+        ->where('id', $id)
+        ->select('username', 'bio', 'images', 'id')
+        ->first();
+        $isfollowing = DB::table('follows')
+        ->where('follower', Auth::id())
+        ->get();
+        $searchWord = $request->input('searchWord');
 
-      if($request->isMethod('post')){
-        if($request->filled('searchWord'))
+    if($request->filled('searchWord'))
         {
-            $searchWord = $request->input('searchWord');
             $searchResults = User::where('username','LIKE',"%$searchWord%")->whereNotIn('id', [$id])->get();
-
-            return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults , 'searchWord' => $searchWord]);
         }
 
-        elseif($request->filled('follow'))
-        {
-            $follower = auth()->user();
-            $isfollowing = $follower->isFollowing($user->id);
-                if(!$isfollowing) {
-                // フォローしていなければフォローする
-                $follower->follow($user->id);
-
-                return redirect('/search');
-            }
-        }
-
-        elseif($request->filled('unfollow'))
-        {
-            $follower = auth()->user();
-            $isFollowing = $follower->isFollowing($user->id);
-                if ($isFollowing) {
-                // フォローしていればフォローを解除する
-                $follower->unfollow($user->id);
-
-                return redirect('/search');
-            }
-        }
-      }
         $searchResults = User::whereNotIn('id', [$id])->get();
-        return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults]);
+        return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults , 'searchWord' => $searchWord,'users' => $users]);
+    }
+
+    //フォローする
+    public function follow($id){
+        $isfollowing = $follower->isfollowing($users->id);
+        $followId = $request->input('follow');
+        Follow::create([
+            'follow' => $followId,
+            'follower' => $id,
+        ]);
+        return back();
+    }
+
+    //フォロー解除
+    public function unfollow($id){
+        $isfollowing = $follower->isfollowing($users->id);
+        $unfollowId = $request->input('unfollow');
+        Follow::where('follow',$unfollowId)
+            ->where('follower',$id)
+            ->delete();
+        return back();
     }
 
     public function logout()
