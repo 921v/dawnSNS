@@ -36,12 +36,14 @@
           <img class="delete-icon" src="images/trash.png" alt="削除">
         </button>
       {!! Form::close()!!}
+
       <!-- 4.3.2 編集ボタン表示 -->
       <div class='modalopen' data-target="post-modal-{{ $timeLine -> id }}">
         <a class="edit-btn" href="" >
           <img src="images/edit.png" alt="編集">
         </a>
           <!-- 4.4 編集オーバーレイ表示 -->
+            <div class="overlay"></div>
             <div class="editmodal" id="post-modal-{{ $timeLine -> id }}">
               <div id="modal-contents">
                 {!! Form::open(['url' => '/top','method' => 'post']) !!}
@@ -57,25 +59,7 @@
     @endif
   </div>
 </div>
-  @endforeach
-  @endif
-
-<script>
-$(function () {
-  $(".modalopen").each(function () {
-    $(this).on('click', function () {
-      var target = $(this).data('target');
-      var editmodal = document.getElementById(target);
-      console.log(editmodal);
-      $(editmodal).fadeIn();
-      return false;
-    });
-  });
-  $(".post-edit-btn").on('click', function () {
-    $('.modal-contents').fadeOut();
-    return false;
-  })
-});
-</script>
+@endforeach
+@endif
 
 @endsection

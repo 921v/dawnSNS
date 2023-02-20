@@ -71,7 +71,7 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="{{ asset('/js/modal.js') }}"></script>
     <script src="JavaScriptファイルのURL"></script>
 </body>
 </html>
