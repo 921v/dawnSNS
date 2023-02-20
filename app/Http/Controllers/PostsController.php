@@ -79,8 +79,7 @@ class PostsController extends Controller
     public function profileEdit(Request $request){
         $request->validate([
             'username' => ['string', 'min:4', 'max:12'],
-            'mail' => ['string', 'email', 'min:4', 'max:50',
-            Rule::unique('users')->ignore(Auth::id(), 'id'),],
+            'mail' => ['string', 'email', 'min:4', 'max:50'],
             'bio' => ['max:200'],
             'images' => ['file', 'mimes:jpg,png,bmp,gif,svg,jpeg,PNG']
         ],

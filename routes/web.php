@@ -47,7 +47,7 @@ Route::get('/profile/{id}','UsersController@userProfile')->name('users.userProfi
 
   //ログインユーザーページ
 Route::get('/profile' , 'PostsController@profile');
-Route::post('/profile/edit' , 'PostsController@profileEdit');
+Route::post('/profileEdit' , 'PostsController@profileEdit');
 
 Route::get('/search','UsersController@search')->name('users.search');
 Route::post('/search','UsersController@search')->name('users.search');

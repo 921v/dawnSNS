@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- ログインユーザーのプロフィール表示 -->
-{{ Form::open(['url' => '/profileEdit','files'=>true])}}
+{{ Form::open(['url' => '/profileEdit','method' => 'post', 'files' => true])}}
 <div class='my-profile'>
   <div class="myprofile-icon">
     <img src="images/dawn.png" alt="ユーザーアイコン" class="my-icon">
@@ -76,22 +76,22 @@
 
   <tr>
     <div class="profile-text">
-      <th>{{ Form::label('images','Icon Image') }}</th>
+      <th>{{ Form::label('file','Icon Image') }}</th>
     </div>
     <div class="profile-form">
-      <td>{{ Form::textarea('images',null,['class'=>'profile-image', 'placeholder' => 'ファイルを選択']) }}</td>
+      <td>{{ Form::file('file') }}</td>
     </div>
   </tr>
-    @if($errors->has('images'))
+    @if($errors->has('file'))
     <div class="error">
-      <p>{{ $errors->first('images') }}</p>
+      <p>{{ $errors->first('file') }}</p>
     </div>
     @endif
   </table>
 </div>
 
-<div class="profile-form">
-  {{ Form::submit('更新',['class'=>'up_btn']) }}
+<div class="profile-btn">
+<button type="submit" class="up-btn">更新</button>
 </div>
 
 {{ Form::close()}}
