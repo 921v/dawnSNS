@@ -25,7 +25,11 @@ class PostsController extends Controller
         $id = Auth::id();
         $follow_ids = Follow::where('follower',$id)->pluck('follow')->toArray();
         $follow_ids[] = $id;
-        $timeLines = $post->getTimelines($follow_ids);
+        $timeLines = DB::table('posts')
+            ->join('users','posts.user_id','=','users.id')
+            ->select('posts.id','posts.posts','posts.user_id','posts.created_at','users.username','users.images')
+            ->orderBy('posts.created_at','desc')
+            ->get();
 
       // 投稿作成
       if($request->isMethod('post')){

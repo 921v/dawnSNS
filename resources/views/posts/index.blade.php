@@ -21,9 +21,9 @@
   <div class="user-post">
     <div class="post-info">
       <a href="/profile/{{ $timeLine -> user_id}}">
-        <img class="user-post-icon" src="images/{{ $timeLine -> user -> images}}" alt="ユーザーアイコン">
+        <img class="user-post-icon" src="images/{{ $timeLine -> images}}" alt="ユーザーアイコン">
       </a>
-      <p class="post-username">{{ $timeLine -> user -> username}}</p>
+      <p class="post-username">{{ $timeLine -> username}}</p>
       <p class="post-time">{{ $timeLine -> created_at }}</p>
     </div>
     <p class="post-text">{{ $timeLine -> posts }}</p>

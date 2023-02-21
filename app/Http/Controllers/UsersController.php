@@ -26,7 +26,7 @@ class UsersController extends Controller
             ->select('users.username', 'posts.posts', 'users.images', 'posts.created_at', 'posts.id',)
             ->orderBy('posts.created_at', 'desc')
             ->get();
-        $followings = DB::table('follows')
+        $isfollowing = DB::table('follows')
             ->where('follower', Auth::id())
             ->get();
         $followlist = DB::table('follows')
@@ -36,56 +36,31 @@ class UsersController extends Controller
             ->where('follow', Auth::id())
             ->count();
 
-        return view('users.userProfile', ['timeLines' => $timeLines, 'auths' => $auths, 'followlist' => $followlist, 'followerlist' => $followerlist, 'followings' => $followings, 'users' => $users]);
+        return view('users.userProfile', ['timeLines' => $timeLines, 'auths' => $auths, 'followlist' => $followlist, 'followerlist' => $followerlist, 'isfollowing' => $isfollowing, 'users' => $users]);
     }
 
     //検索
     public function search(Request $request){
         $auths = Auth::user();
-        $id = Auth::id();
-        $users = DB::table('users')
-        ->where('id', $id)
-        ->select('username', 'bio', 'images', 'id')
-        ->first();
+        $users = User::all();
+        $query = User::query();
         $isfollowing = DB::table('follows')
         ->where('follower', Auth::id())
         ->get();
+        $followlist = DB::table('follows')
+        ->where('follower', Auth::id())
+        ->count();
+        $followerlist = DB::table('follows')
+            ->where('follow', Auth::id())
+            ->count();
         $searchWord = $request->input('searchWord');
 
-    if($request->filled('searchWord'))
-        {
-            $searchResults = User::where('username','LIKE',"%$searchWord%")->whereNotIn('id', [$id])->get();
+        if (!empty($searchWord)) {
+            $query = User::query();
+            $query->where('username', 'like', '%' . $searchWord . '%');
         }
 
-        $searchResults = User::whereNotIn('id', [$id])->get();
-        return view('users.search' , [ 'auths' => $auths , 'searchResults' => $searchResults , 'searchWord' => $searchWord,'users' => $users]);
+        $users = $query->get();
+        return view('users.search', ['auths' => $auths, 'users' => $users, 'isfollowing' => $isfollowing, 'followlist' => $followlist, 'followerlist' => $followerlist, 'searchWord' => $searchWord]);
     }
-
-    //フォローする
-    public function follow($id){
-        $isfollowing = $follower->isfollowing($users->id);
-        $followId = $request->input('follow');
-        Follow::create([
-            'follow' => $followId,
-            'follower' => $id,
-        ]);
-        return back();
-    }
-
-    //フォロー解除
-    public function unfollow($id){
-        $isfollowing = $follower->isfollowing($users->id);
-        $unfollowId = $request->input('unfollow');
-        Follow::where('follow',$unfollowId)
-            ->where('follower',$id)
-            ->delete();
-        return back();
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
-    }
-
 }
