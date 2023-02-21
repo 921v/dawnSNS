@@ -43,6 +43,7 @@ class UsersController extends Controller
     public function search(Request $request){
         $auths = Auth::user();
         $users = User::all();
+        $searchWord = $request->input('searchWord');
         $query = User::query();
         $isfollowing = DB::table('follows')
         ->where('follower', Auth::id())
@@ -53,7 +54,6 @@ class UsersController extends Controller
         $followerlist = DB::table('follows')
             ->where('follow', Auth::id())
             ->count();
-        $searchWord = $request->input('searchWord');
 
         if (!empty($searchWord)) {
             $query = User::query();
