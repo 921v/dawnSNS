@@ -42,7 +42,7 @@
       <th>{{ Form::label('password','Password') }}</th>
     </div>
     <div class="profile-form">
-      <td>{{ Form::textarea('password',$auths->password,['disabled', 'class' =>'profile-password', 'rows'=>'1', 'style' => '-webkit-text-security:disc']) }}</td>
+      <td>{{ Form::textarea('password',$auths->password,['readonly', 'class' =>'profile-password', 'rows'=>'1', 'style' => '-webkit-text-security:disc']) }}</td>
     </div>
   </tr>
 
@@ -79,7 +79,9 @@
       <th>{{ Form::label('file','Icon Image') }}</th>
     </div>
     <div class="profile-form">
-      <td>{{ Form::file('file') }}</td>
+      <label class="image-label">
+      <td>{{ Form::file('file',['class'=>'profile-image']) }}</td>
+      </label>
     </div>
   </tr>
     @if($errors->has('file'))

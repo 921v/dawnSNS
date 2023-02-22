@@ -22,10 +22,12 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href = "http://127.0.0.1:8000/top"><img src="images/main_logo.png"></a></h1>
+        <h1><a href = "http://127.0.0.1:8000/top"><img src="images/main_logo.png" class ="dawnlogo"></a></h1>
+            <!-- アコーディオンメニュー -->
             <div class="accordion">
                 <label class ="accordion-title", for ="accordion-title">
                     <p>{{ Auth::user()->username }}さん</p>
+                    <span class="arrow"> ∨ </span>
                     <img class="myicon" src="images/dawn.png"></label>
                 <input type="checkbox" id="accordion-title" />
                 <ul id="accordion-content">
@@ -36,34 +38,33 @@
             </div>
         </div>
     </header>
+
     <div id="row">
         <div id="container">
             @yield('content')
         </div >
+        <!-- サイドバー -->
         <div id="side-bar">
             <div id="side-bar-confirm">
-                    <p class="side-ffitem side-myname">{{ Auth::user()->username }}さんの</p>
-                <div class="wrap-bar">
-                    <div id="side-bar-confirm-follow">
-                        <p class="side-ffitem">フォロー数</p>
-                        <p class="side-count">{{ $auths -> followersCount() }}名</p>
-                    </div>
+                <p class="side-ffitem side-myname">{{ Auth::user()->username }}さんの</p>
+                <div id="side-bar-confirm-follow">
+                    <p class="side-ffitem">フォロー数</p>
+                    <p class="side-count">{{ $auths -> followersCount() }}名</p>
+                </div>
 
-                    <div id="side-bar-confirm-follow-list">
-                        <p class="btn"><a href="/follow-list" class="side-btn">フォローリスト</a></p>
-                    </div>
+                <div id="side-bar-confirm-follow-list">
+                    <p class="btn"><a href="/follow-list" class="side-btn">フォローリスト</a></p>
+                </div>
 
-                    <div id="side-bar-confirm-follower">
-                        <p class="side-ffitem">フォロワー数</p>
-                        <p class="side-count">{{ $auths -> followsCount() }} 名</p>
-                    </div>
+                <div id="side-bar-confirm-follower">
+                    <p class="side-ffitem">フォロワー数</p>
+                    <p class="side-count">{{ $auths -> followsCount() }} 名</p>
+                </div>
 
-                    <div id="side-bar-confirm-follower-list">
-                        <p class="btn"><a href="follower-list" class="side-btn">フォロワーリスト</a></p>
-                    </div>
+                 <div id="side-bar-confirm-follower-list">
+                    <p class="btn"><a href="follower-list" class="side-btn">フォロワーリスト</a></p>
                 </div>
             </div>
-
             <div id="side-bar-search">
                 <p class="btn"><a href="search" class="side-btn">ユーザー検索</a></p>
             </div>

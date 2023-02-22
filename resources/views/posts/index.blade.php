@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+
 <!-- 4.1 投稿フォームの設置 -->
 <div class="post-area">
   <div class="form-group">
@@ -16,7 +17,6 @@
 
 <!-- 4.2 ユーザーのつぶやきを表示 -->
 <div class="timeline">
-  @if (isset($timeLines))
   @foreach ($timeLines as $timeLine)
   <div class="user-post">
     <div class="post-info">
@@ -58,8 +58,7 @@
         </div>
     @endif
   </div>
+  @endforeach
 </div>
-@endforeach
-@endif
 
 @endsection
