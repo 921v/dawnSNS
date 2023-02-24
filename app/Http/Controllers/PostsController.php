@@ -43,17 +43,6 @@ class PostsController extends Controller
         return redirect('/top');
         }
 
-      // 投稿編集
-        elseif($request->filled('editPost'))
-        {
-            $post_id = $request->input('id');
-            $user_editPost = $request->input('editPost');
-
-            Post::where('id',$post_id)->update(['posts' => $user_editPost]);
-
-            return redirect('/top');
-        }
-
       // 投稿削除
         elseif($request->filled('deletePost'))
         {
@@ -67,6 +56,14 @@ class PostsController extends Controller
         return view('posts.index' , [ 'auths' => $auths , 'timeLines' => $timeLines]);
     }
 
+    public function update(Request $request){
+        \DB::table('posts')
+            ->where('id',$request->input('id'))
+            ->update([
+                'posts'=>$request->input('up_post')
+            ]);
+        return redirect('/top');
+    }
 
     public function profile(Request $request){
         $auths = Auth::user();

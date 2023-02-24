@@ -70,6 +70,15 @@ span {
     color: white;
 }
 
+span.add {
+    position: absolute;
+    top: 25px;
+    left: 110px;
+    font-size: 20px;
+    color: white;
+    transform: scale(1, -1);
+}
+
 input {
     display: none;
 }
@@ -82,7 +91,7 @@ input {
 }
 
 .accordion li {
-    border: 1px solid;
+    border: none;
     height: 0;
     overflow: hidden;
     -webkit-transition: all 0.5s;
@@ -105,6 +114,7 @@ li:hover>a {
 #accordion-title:checked~#accordion-content li {
     height: 60px;
     opacity: 1;
+    border: 0.2px solid #6C6C6C;
 }
 
 /* main content */
@@ -115,13 +125,14 @@ li:hover>a {
 
 #container {
     width: 79.8%;
-    border-right: 2px solid #C0C0C0;
 }
 
 /* side-bar */
 #side-bar {
     width: 20%;
+    height: 100vh;
     box-sizing: border-box;
+    border-left: 2px solid #C0C0C0;
 }
 
 #side-bar-confirm {
@@ -312,16 +323,11 @@ textarea {
     margin-left: 2vw;
 }
 
-.contents-validator {
-    color: orange;
-    float: left;
-    margin: 1vw 0 0 2vw;
-}
-
 .post-edit-btn {
     border: none;
     background-color: white;
-    margin: 0.5vw 0 0 6vw;
+    margin-top: 20px;
+    margin-left: 900px;
 }
 
 /* 5 ユーザー検索 */
@@ -392,6 +398,7 @@ textarea {
     border-radius: 0.2vw;
     background-color: #6782be;
     color: white;
+    margin-top: -30px;
 }
 
 .un {
@@ -501,32 +508,49 @@ textarea {
 }
 
 /* 7-2 他ユーザーのプロフィール */
-.user-profile-contents {
-    padding: 2vw 0 0 6vw;
+.other-profile-top {
+    padding-top: 1.5vw;
     border-bottom: 2px solid silver;
-    min-height: 10vw;
+    min-height: 200px;
 }
 
-.user-profile-name-text {
-    display: inline;
-    padding-left: 1vw;
+.other-btn-area {
+    position: absolute;
+    left: 40%;
 }
 
-.user-profile-username {
-    margin-left: 3vw;
-    max-width: 3.6vw;
-    max-height: 3.6vw;
+.other {
+    margin-left: 100px;
+    float: left;
 }
 
-.user-bio-profile {
-    padding: 1vw 0 0 6vw;
+.other-profile-text {
+    text-align: left;
+    margin-left: 200px;
+    vertical-align: top;
+    font-size: 25px;
 }
 
-.user-bio-profile-text {
-    display: inline;
-    padding-left: 1vw;
+.left-name {
+    margin-top: 30px;
 }
 
-.profile-user-bio {
-    padding-left: 5.4vw;
+.left-bio {
+    margin-top: 60px;
+}
+
+.right-name {
+    float: left;
+    text-align: left;
+    margin-top: -25px;
+    margin-left: 200px;
+    font-size: 25px;
+}
+
+.right-bio {
+    float: left;
+    text-align: left;
+    margin-left: 380px;
+    font-size: 20px;
+    margin-top: -25px;
 }
