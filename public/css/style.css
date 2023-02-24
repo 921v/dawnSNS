@@ -440,7 +440,8 @@ textarea {
 .profile-username,
 .profile-mail-address,
 .profile-new-password,
-.bio {
+.bio,
+.profile-image {
     border: none;
     outline: none;
     border-bottom: 1px solid black;
@@ -453,26 +454,14 @@ textarea {
     background-color: white;
 }
 
-.profile-image {
-    display: inline-block;
-    border: none;
-    height: 150px;
-    width: 22vw;
-    background-color: #e0e0e0;
-    border-bottom: 1px solid black;
-}
-
 .image-label {
-    background-color: white;
-    font-size: 15px;
-    cursor: pointer;
-    position: relative;
-    text-align: center;
-    top: 50px;
-    width: 200px;
-    padding: 10px;
-    left: 140px;
-
+    padding: 6px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    position: absolute;
+    color: #6C6C6C;
+    top: 700px;
+    left: 580px;
 }
 
 .profile-table {

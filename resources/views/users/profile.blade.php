@@ -79,8 +79,10 @@
       <th>{{ Form::label('file','Icon Image') }}</th>
     </div>
     <div class="profile-form">
-      <label class="image-label">
-      <td>{{ Form::file('file',['class'=>'profile-image']) }}</td>
+      <td>{{ Form::textarea('dummy',null,['readonly', 'class' =>'profile-image', 'rows'=>'6', 'style' => '-webkit-text-security:disc']) }}</td>
+      <label for="fileinput">
+        <span class="image-label">ファイルを選択</span>
+        <input type="file" class="profile-image" id="fileinput" name="icon-image">
       </label>
     </div>
   </tr>

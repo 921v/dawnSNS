@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -22,13 +22,13 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href = "http://127.0.0.1:8000/top"><img src="images/main_logo.png" class ="dawnlogo"></a></h1>
+        <h1><a href = "http://127.0.0.1:8000/top"><img src="{{ asset('/images/main_logo.png') }}" class ="dawnlogo"></a></h1>
             <!-- アコーディオンメニュー -->
             <div class="accordion">
                 <label class ="accordion-title", for ="accordion-title">
                     <p>{{ Auth::user()->username }}さん</p>
                     <span class="arrow"> ∨ </span>
-                    <img class="myicon" src="images/dawn.png"></label>
+                    <img class="myicon" src="{{ asset('/images/dawn.png') }}"></label>
                 <input type="checkbox" id="accordion-title" />
                 <ul id="accordion-content">
                     <li><a href="/top">HOME</a></li>
@@ -72,7 +72,7 @@
     </div>
     <footer>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('/js/modal.js') }}"></script>
-    <script src="JavaScriptファイルのURL"></script>
 </body>
 </html>
