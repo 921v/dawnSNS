@@ -7,7 +7,6 @@ $(function () {
       console.log(modal);
       $(modal).fadeIn();
       $('.overlay').fadeIn();
-      $('body').addClass('no_scroll');
       return false;
     });
   });
@@ -15,9 +14,13 @@ $(function () {
   //背景で消えるようにする
   $('.overlay').on('click', function () {
     $('.overlay, .editmodal').fadeOut();
-    $('body').removeClass('no_scroll');
     return false;
   });
+});
+
+$('#save').click(function () {
+  var editPost = $('#editPost').val();
+  $(".post-text").text(editPost);
 });
 
 $('.accordion-title').click(function () {

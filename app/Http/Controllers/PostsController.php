@@ -60,7 +60,7 @@ class PostsController extends Controller
         \DB::table('posts')
             ->where('id',$request->input('id'))
             ->update([
-                'posts'=>$request->input('up_post')
+                'posts'=>$request->input('editPost')
             ]);
         return redirect('/top');
     }

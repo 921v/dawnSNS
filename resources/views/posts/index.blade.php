@@ -46,11 +46,11 @@
             <div class="overlay"></div>
             <div class="editmodal" id="post-modal-{{ $timeLine -> id }}">
               <div id="modal-contents">
-                {!! Form::open(['url' => '/post/update','method' => 'post']) !!}
+                {!! Form::open(['url' => '/top/update','method' => 'post']) !!}
                 {!! Form::hidden('id', $timeLine -> id) !!}
-                {!! Form::textarea('up_post', $timeLine -> posts, ['required', 'class'=>'post-edit-contents'])!!}
-                  <button type="submit" class="post-edit-btn">
-                    <img src="images/edit.png" alt="編集完了">
+                {!! Form::textarea('editPost', $timeLine -> posts, ['required', 'class'=>'post-edit-contents'])!!}
+                  <button type="submit" id="save" class="post-edit-btn">
+                    <img src="images/edit.png" alt="編集送信">
                   </button>
                 {!! Form::close()!!}
               </div>
