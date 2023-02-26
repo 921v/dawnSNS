@@ -49,9 +49,7 @@
                 {!! Form::open(['url' => '/top/update','method' => 'post']) !!}
                 {!! Form::hidden('id', $timeLine -> id) !!}
                 {!! Form::textarea('editPost', $timeLine -> posts, ['required', 'class'=>'post-edit-contents'])!!}
-                  <button type="submit" id="save" class="post-edit-btn">
-                    <img src="images/edit.png" alt="編集送信">
-                  </button>
+                <button type="submit" id="save" class="post-edit-btn"><img src="images/edit.png" alt="編集送信"></button>
                 {!! Form::close()!!}
               </div>
             </div>

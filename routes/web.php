@@ -42,6 +42,7 @@ Route::get('/',function(){
 Route::get('/top','PostsController@index')->name('top');
 Route::post('/top','PostsController@index')->name('top');
 
+Route::get('/top/update','PostsController@update');
 Route::post('/top/update','PostsController@update');
 
   //ログインユーザー以外のページ
