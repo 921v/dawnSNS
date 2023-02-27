@@ -39,7 +39,7 @@
 
       <!-- 4.3.2 編集ボタン表示 -->
       <div class='modalopen' data-target="post-modal-{{ $timeLine -> id }}">
-        <a class="edit-btn" href="" >
+        <a class="edit-btn">
           <img src="images/edit.png" alt="編集">
         </a>
           <!-- 4.4 編集オーバーレイ表示 -->

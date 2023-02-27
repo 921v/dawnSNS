@@ -7,7 +7,7 @@ $(function () {
       console.log(modal);
       $(modal).fadeIn();
       $('.overlay').fadeIn();
-      return false;
+      //return false;
     });
   });
 
@@ -18,10 +18,10 @@ $(function () {
   });
 });
 
-$('#save').click(function () {
-  var editPost = $('#editPost').val();
-  $(".post-text").text(editPost);
-});
+//$('#save').click(function () {
+//var editPost = $('#editPost').val();
+//$(".post-text").text(editPost);
+//});
 
 $('.accordion-title').click(function () {
   $('span').toggleClass('add');
