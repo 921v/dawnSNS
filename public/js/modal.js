@@ -24,5 +24,5 @@ $(function () {
 //});
 
 $('.accordion-title').click(function () {
-  $('span').toggleClass('add');
+  $('.arrow').toggleClass('add');
 });

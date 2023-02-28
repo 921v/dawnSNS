@@ -62,7 +62,7 @@ header {
     font-size: 18px;
 }
 
-span {
+.arrow {
     position: absolute;
     top: 25px;
     left: 110px;
@@ -70,7 +70,7 @@ span {
     color: white;
 }
 
-span.add {
+.arrow.add {
     position: absolute;
     top: 25px;
     left: 110px;
@@ -130,7 +130,6 @@ li:hover>a {
 /* side-bar */
 #side-bar {
     width: 20%;
-    height: 100vh;
     box-sizing: border-box;
     border-left: 2px solid #C0C0C0;
 }
@@ -467,10 +466,10 @@ textarea {
     padding: 6px;
     background: #FFFFFF;
     border-radius: 5px;
-    position: absolute;
+    position: relative;
     color: #6C6C6C;
-    top: 700px;
-    left: 580px;
+    top: 630px;
+    left: 450px;
 }
 
 .profile-table {

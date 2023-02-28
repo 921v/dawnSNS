@@ -81,14 +81,19 @@ class PostsController extends Controller
         $request->validate([
             'username' => ['string', 'min:4', 'max:12'],
             'mail' => ['string', 'email', 'min:4', 'max:50'],
+            'newpassword' => ['string', 'alpha_num', 'min:4', 'max:12', 'unique:users'],
             'bio' => ['max:200'],
-            'images' => ['file', 'mimes:jpg,png,bmp,gif,svg,jpeg,PNG']
+            'images' => ['file', 'mimes:jpg,png,bmp,gif,svg,jpeg,PNG'],
         ],
         [
             'username.min' => '４文字以上で入力してください',
             'username.max' => '１２文字以内で入力してください',
             'mail.unique' => 'このメールアドレスは既に使われています',
-
+            'newpassword.required' => 'パスワードが未入力です',
+            'newpassword.alpha_num' => '英数字で入力してください',
+            'newpassword.min' => '４文字以上で入力してください',
+            'newpassword.max12' => '１２文字以内で入力してください',
+            'newpassword.unique' => 'このパスワードは既に使われています',
             'bio.max' => '200文字以内で入力してください',
             'images.mimes' => 'jpg、pnj、bmp、gif、svg、jpeg、PNGの形式のファイルのみ有効です',
         ]);
@@ -96,46 +101,39 @@ class PostsController extends Controller
         $username = $request->input('username');
         $auths = Auth::user();
         $auths->username = $request->input('username');
-
-        if (request('newpassword')) {
-            $request->validate([
-                'newpassword' => ['required', 'string', 'alpha_num', 'min:4', 'max:12', 'unique:users']
-            ], [
-                'newpassword.required' => 'パスワードが未入力です',
-                'newpassword.alpha_num' => '英数字で入力してください',
-                'newpassword.min' => '４文字以上で入力してください',
-                'newpassword.max12' => '１２文字以内で入力してください',
-                'newpassword.unique' => 'このパスワードは既に使われています',
-            ]);
-            $auths->password = bcrypt($request->input('newpassword'));
-
-        } else {
-            $password = DB::table('users')
-                ->where('id', Auth::id())
-                ->value('password');
-
-            $auths->password = $password;
-        }
-
+        $newpassword = $request->input('newpassword');
         $auths->mail = $request->input('mail');
         $auths->bio = $request->input('bio');
         $auths->save();
         $images = $request->file('images');
 
-        if (isset($images)) {
-            $imageName = $images->getClientOriginalName();
-            $images->storeAs('public/images', $imageName);
-            $auths->images = $imageName;
-            $auths->save();
-        } else {
-            $images = DB::table('users')
+        if (isset($newpassword)) {
+            $newpassword = $request->input('password');
+            \DB::table('users')
                 ->where('id', Auth::id())
-                ->value('images');
-            $auths->images = $images;
-            $auths->save();
+                ->update([
+                    'password' => bcrypt($newpassword),
+                ]);
+
+        } else {
+            $password = DB::table('users')
+                ->where('id', Auth::id())
+                ->value('password');
+            $auths->password = $password;
         }
 
-        return redirect('/profile')->with('password', $auths['password']);
+        if (isset($images)) {
+            $imageName = $images->getClientOriginalName();
+            $images->storeAs('', $imageName,'public');
+            \DB::table('users')
+                ->where('id', Auth::id())
+                ->update([
+                    'images' => $imageName,
+                ]);
+        } else {
+        }
+
+        return redirect('/profile');
     }
 
 }
