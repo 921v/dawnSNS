@@ -34,6 +34,11 @@ class FollowsController extends Controller
             ->select('users.username','posts','users.images','posts.created_at as created_at')
             ->orderBy('posts.created_at','desc')
             ->get();
+        $timeLines = DB::table('posts')
+            ->join('users','posts.user_id','=','users.id')
+            ->select('posts.id','posts.posts','posts.user_id','posts.created_at','users.username','users.images')
+            ->orderBy('posts.created_at','desc')
+            ->get();
 
         return view('follows.followList',[ 'auths' => $auths , 'icons'=>$icons, 'followlist' => $followlist , 'followerlist'=>$followerlist, 'timeLines' => $timeLines]);
     }
@@ -58,6 +63,11 @@ class FollowsController extends Controller
             ->join('users','posts.user_id','=','users.id')
             ->whereIn('user_id',$follower_id)
             ->select('users.username','posts','users.images','posts.created_at as created_at')
+            ->orderBy('posts.created_at','desc')
+            ->get();
+        $timeLines = DB::table('posts')
+            ->join('users','posts.user_id','=','users.id')
+            ->select('posts.id','posts.posts','posts.user_id','posts.created_at','users.username','users.images')
             ->orderBy('posts.created_at','desc')
             ->get();
 

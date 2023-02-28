@@ -18,7 +18,7 @@
   @foreach ($timeLines as $timeLine)
   <div class="user-post">
     <div class="post-info">
-      <a href="/profile/{{ $icon -> id}}">
+      <a href="/profile/{{ $timeLine -> user_id}}">
         <img class="user-post-icon" src="images/{{ $timeLine -> images}}" alt="ユーザーアイコン">
       </a>
       <p class="post-username">{{ $timeLine -> username}}</p>
